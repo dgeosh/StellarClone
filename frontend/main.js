@@ -13,7 +13,7 @@ const evaluate = document.querySelector("#evaluate");
 $("#sequenceContainer").hide();
 
 $("#evaluate").click(async () => {
-    const url = "https://exalted-summer-401505.wl.r.appspot.com";
+    const url = "https://exalted-summer-401505.wl.r.appspot.com/predict";
     // gravity
     const gravitySlider = document.querySelector("#gravity").value - 1;
     motionFactor = (-4/14)*gravitySlider + 5;
