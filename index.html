@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			
+			.controls {
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				z-index: 100;
+				display: block;
+			}
+
+			.move-left {
+				padding-left: 20px;
+			}
+
+			#sequenceContainer {
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display: block;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	</head>
+	<body>
+
+		<div class="controls">
+			<h1 class="move-left">Controls</h1>
+			<label class="move-left">Gravity</label><br>
+			<input type="range" min="1" max="15" value="1" style="margin-left: 20px;" id="gravity">
+
+			<br><br>
+			<label class="move-left">Diameter</label><br>
+			<input type="range" min="1" max="15" value="1" style="margin-left: 20px;" id="diameter">
+
+			<br><br>
+			<label class="move-left">Radiation</label><br>
+			<input type="range" min="1" max="15" value="1" style="margin-left: 20px;" id="radiation">
+
+			<br><br>
+			<label class="move-left">Temperature</label><br>
+			<input type="range" min="1" max="15" value="1" style="margin-left: 20px;" id="temperature">
+
+			<br><br>
+			<input type="button" value="Evaluate" id="evaluate" style="margin-left: 20px;">
+			<input type="button" value="Mode" id="changeMode" style="margin-left: 20px;">
+		</div>
+
+		<div id="sequenceContainer">
+			<h1>SEQUENCE</h1>
+		</div>
+		
+		<script type="module" src="/main.js"></script>
+	</body>
+</html>
