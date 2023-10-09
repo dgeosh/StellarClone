@@ -3,8 +3,10 @@ import pandas as pd
 import warnings
 import sys
 from flask import Flask, request, jsonify
-
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/")
 def hello_world():
@@ -66,6 +68,7 @@ def predict(t, g):
         }
 
 @app.route('/predict', methods=['POST'])
+@cross_origin()
 def make_prediction():
         t = request.form.get('temp')
         g = request.form.get('grav')
