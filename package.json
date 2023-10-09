@@ -1,0 +1,28 @@
+{
+  "name": "stellarclone",
+  "version": "1.0.0",
+  "description": "Visuals for StellarClone's C. Elegans Digital Twin",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgeosh/StellarClone.git"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "formidable": "^3.5.1",
+    "python-shell": "^5.0.0",
+    "three": "^0.157.0",
+    "vite": "^4.4.11"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dgeosh/StellarClone/issues"
+  },
+  "homepage": "https://github.com/dgeosh/StellarClone#readme"
+}

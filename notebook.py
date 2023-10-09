@@ -22,7 +22,7 @@ try:
         p = tp["Reporter Name"].values
 
         # Use list comprehension for predictions
-        n = [i for i in range(1, len(p) + 1) if loaded_model.predict([(i, t)])[0] >= 0.1]
+        n = [i for i in range(1, len(p) + 1) if loaded_model.predict([(i, t)])[0] >= 0.1 and loaded_model.predict([(i, t)])[0] < 100]
 
 except KeyboardInterrupt:
         print("\nExiting...")
