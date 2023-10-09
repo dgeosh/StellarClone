@@ -5,6 +5,7 @@ import * as THREE from 'three';
 let motionFactor = 5;
 let diameterFactor = 0.1;
 
+
 let updateGeometry = true;
 
 const evaluate = document.querySelector("#evaluate");
@@ -12,7 +13,7 @@ const evaluate = document.querySelector("#evaluate");
 $("#sequenceContainer").hide();
 
 $("#evaluate").click(async () => {
-    const url = "";
+    const url = "http://localhost:3000";
     //////////////////////////////SET URL FOR BACKEND
     // gravity
     const gravitySlider = document.querySelector("#gravity").value - 1;
@@ -23,40 +24,40 @@ $("#evaluate").click(async () => {
     diameterFactor = (0.5/14)*diameterSlider + 0.1;
     updateGeometry = true;
 
-    // radation
-    const radationSlider = document.querySelector("#radiation").value;
 
+    alert("test")
     // temperature
     const temperatureSlider = document.querySelector("#temperature").value;
 
     const data = {
         grav: gravitySlider,
-        diam: diameterSlider,
-        rad: radiationSlider,
         temp: temperatureSlider
     };
 
+
     var res = await fetch(url, {
         method: "POST",
-        mode: "cors", 
-        cache: "no-cache",
-        credentials: "same-origin",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
     })
 
-    process(await res.json());
+    process(await res.text());
 })
 
 async function process(params){
-    //do stuff
+    $("#sequenceContainer").html(`<p>${params}</p>`)
 }
 
 $("#changeMode").click(() => {
-    $("canvas").toggle();
+    $("#wormDisplayer").toggle();
     $("#sequenceContainer").toggle();
+    let color = $("#controlsContainer").css("background-color");
+    if(color != "rgb(245, 250, 255)")
+        $("#controlsContainer").css("background-color","#f5faff");
+    else
+        $("#controlsContainer").css("background-color","#fff5f5");
 })
 
 // graphics Here
@@ -66,7 +67,8 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+
+$("#wormDisplayer").append( renderer.domElement );
 
 var light = new THREE.PointLight( 'white', 1 );
 light.position.set( 100, 150, 300 );
