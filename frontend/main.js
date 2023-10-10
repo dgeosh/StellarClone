@@ -26,18 +26,13 @@ $("#evaluate").click(async () => {
     // temperature
     const temperatureSlider = document.querySelector("#temperature").value;
 
-    const data = {
-        grav: gravitySlider,
-        temp: temperatureSlider
-    };
-
+    let data = new FormData();
+    data.append('temp', temperatureSlider);
+    data.append('grav', gravitySlider);
 
     var res = await fetch(url, {
         method: "POST",
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
-        body: JSON.stringify(data),
+        body: data,
     })
 
     process(await res.text());
