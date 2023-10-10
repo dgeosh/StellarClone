@@ -15,19 +15,45 @@
 			font-family: 'Open Sans', sans-serif;
 			}
 			body {
+				background-color:#000000;
+				background-image: url(space.jpg);
+				background-size: cover; 
+				background-attachment: fixed;
+				background-repeat: no-repeat;
+				background-position: center center;
 				margin: 0;
 			}
 
 			#controlsContainer{
-				background-color: #fff5f5
+				background-color: #000000
 			}
 
 			.controls {
 				top: 10px;
-				width: 10%;
+				width: 20%;
 				z-index: 100;
 				display: block;
 				padding-right:50px;
+			}
+			.r{
+				    overflow: hidden;
+					width: 200px;
+				}
+				
+			
+
+			.b{
+					background-color: #ffffff; /* Background color */
+					color: #000000; /* Text color */
+					padding: 10px 20px; /* Padding around the text */
+					border: none; /* No border */
+					border-radius: 5px; /* Rounded corners */
+					cursor: pointer; /* Cursor on hover */
+					font-size: 16px; /* Font size */
+					text-align: center; /* Center text */
+					text-decoration: none; /* No underlining */
+					margin-top: 10px;
+				
 			}
 			th {
 				vertical-align: top;
@@ -50,7 +76,6 @@
 			}
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-		<script type="module" crossorigin src="/assets/index-17f815a6.js"></script>
 	</head>
 	<body>
 
@@ -58,21 +83,22 @@
 			<tr>
 				<th id = "controlsContainer">
 					<div class="controls">
-						<h1 class="move-left">Controls</h1>
-						<label class="move-left">Gravity</label><br>
-						<input type="range" min="1" max="15" value="1" style="margin-left: 20px;" id="gravity">
+						<h1 class="move-left"style="color:white" >CONTROLS</h1>
+						<label class="move-left" style="color:lightsalmon">Gravity</label><br>
+						<input type="range" class="r" min="1" max="15" value="1" style="margin-left: 20px; accent-color: lightsalmon" id="gravity">
 			
 						<br><br>
-						<label class="move-left">Diameter</label><br>
-						<input type="range" min="1" max="15" value="1" style="margin-left: 20px;" id="diameter">
+						<label class="move-left" style="color:moccasin">Diameter</label><br>
+						<input type="range" class="r" min="1" max="15" value="1" style="margin-left: 20px; accent-color: moccasin" id="diameter">
 			
 						<br><br>
-						<label class="move-left">Temperature</label><br>
-						<input type="range" min="1" max="15" value="1" style="margin-left: 20px;" id="temperature">
+						<label class="move-left" style="color:aqua">Temperature</label><br>
+						<input type="range" class="r" min="1" max="15" value="1" style="margin-left: 20px; accent-color: aqua" id="temperature">
 			
 						<br><br>
-						<input type="button" value="Evaluate" id="evaluate" style="margin-left: 20px;">
-						<input type="button" value="Mode" id="changeMode" style="margin-left: 20px;">
+						<input type="button" class='b' value="Evaluate" id="evaluate" style="margin-left: 20px;">
+					
+						<input type="button" class= 'b' value="Mode" id="changeMode" style="margin-left: 20px;">
 					</div>
 				</th>
 				<th>
@@ -89,6 +115,6 @@
 			</tr>
 		</table>
 		
-		
+		<script type="module" src="/main.js"></script>
 	</body>
 </html>
