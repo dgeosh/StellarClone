@@ -10,81 +10,111 @@
 		/>
 		<meta charset="utf-8">
 		<title>StellarClone</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 20px;
-            background-color: #f5f5f5;
-            color: #333;
-            background-color:#000000;
-            background-image: url(space.jpg);
-            background-size: cover; 
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-position: center center;
-            
-        }
-        container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        h1 {
-            text-align: left;
-            color: #ffffff;
-        }
-        h2 {
-            color: #d0ff00;
-        }
-        p {
-            text-align: justify;
-            color:black
-        }
-        .image-container {
-            display: flex;  /* Use flexbox to arrange items horizontally */
-        }
-        .image-container img {
-            width: 25%;  /* Set the width of each image to 25% to fit 4 images side by side */
-            margin: 5px;  /* Add some margin to separate the images */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Impact of Space Factors on Worms</h1>
+		<style>
+			* {
+			font-family: 'Open Sans', sans-serif;
+			}
+			body {
+				background-color:#000000;
+				background-image: url(space.jpg);
+				background-size: cover; 
+				background-attachment: fixed;
+				background-repeat: no-repeat;
+				background-position: center center;
+				margin: 0;
+			}
 
-        <h2>Temperature</h2>
-        <b><p>
-            Temperature plays a crucial role in the physiology of worms. Fluctuations in temperature can affect their metabolism, mobility, and lifespan. In space, extreme temperature variations can lead to challenges in maintaining optimal conditions for worm health. Temperature also affects the activity of genes, the following plots show the analysis of the used dataset, that shows the changes in value of different gene sequences under different temperature degrees. 
-        </p></b>
-        <div class="image-container">
-            <img src="plot1.png" alt="Plot 1">
-            <img src="plot2.png" alt="Plot 2">
-            <img src="plot3.png" alt="Plot 3">
-            <img src="plot4.png" alt="Plot 4">
-        </div>
-        <h2>Microgravity and Altered Gravity</h2>
-        <b><p>
-            Microgravity, a defining feature of space, can have profound effects on worms' neurobiology and musculoskeletal systems. Worms adapt to altered gravitational conditions by modifying their locomotion and muscle function, offering valuable insights into the effects of space travel.
-        </p></b>
-        <div class="image-container">
-            <img src="plot5.png" alt="Plot 1">
-            <img src="plot6.png" alt="Plot 2">
-            <img src="plot7.png" alt="Plot 3">
-        </div>
-        <h2>Radiation</h2>
-        <b><p>
-            Space is filled with various types of radiation that can impact DNA and cellular structures. The study of how radiation affects worms is critical for understanding genetic mutations and potential countermeasures for space radiation exposure.
-        </p></b>
+			#controlsContainer{
+				background-color: #000000
+			}
 
-        <h2>General Space Conditions</h2>
-        <b><p>
-            Beyond these specific factors, the unique environment of space introduces additional challenges. Microgravity can impact bone density, muscle mass, and cardiovascular function. Worms serve as a valuable model organism for studying the broader effects of space travel on living organisms.
-        </p></b>
+			.controls {
+				top: 10px;
+				width: 20%;
+				z-index: 100;
+				display: block;
+				padding-right:50px;
+			}
+			.r{
+				    overflow: hidden;
+					width: 200px;
+				}
+				
+			
 
-    </div>
-</body>
+			.b{
+					background-color: #ffffff; /* Background color */
+					color: #000000; /* Text color */
+					padding: 10px 20px; /* Padding around the text */
+					border: none; /* No border */
+					border-radius: 5px; /* Rounded corners */
+					cursor: pointer; /* Cursor on hover */
+					font-size: 16px; /* Font size */
+					text-align: center; /* Center text */
+					text-decoration: none; /* No underlining */
+					margin-top: 10px;
+				
+			}
+			th {
+				vertical-align: top;
+				height:100%
+			}
+			table {
+				height: 100vh;
+			}
+
+			.move-left {
+				padding-left: 20px;
+			}
+
+			#sequenceContainer {
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display: block;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	</head>
+	<body>
+
+		<table>
+			<tr>
+				<th id = "controlsContainer">
+					<div class="controls">
+						<h1 class="move-left"style="color:white" >CONTROLS</h1>
+						<label class="move-left" style="color:lightsalmon">Gravity</label><br>
+						<input type="range" class="r" min="1" max="15" value="1" style="margin-left: 20px; accent-color: lightsalmon" id="gravity">
+			
+						<br><br>
+						<label class="move-left" style="color:moccasin">Diameter</label><br>
+						<input type="range" class="r" min="1" max="15" value="1" style="margin-left: 20px; accent-color: moccasin" id="diameter">
+			
+						<br><br>
+						<label class="move-left" style="color:aqua">Temperature</label><br>
+						<input type="range" class="r" min="1" max="15" value="1" style="margin-left: 20px; accent-color: aqua" id="temperature">
+			
+						<br><br>
+						<input type="button" class='b' value="Evaluate" id="evaluate" style="margin-left: 20px;">
+					
+						<input type="button" class= 'b' value="Mode" id="changeMode" style="margin-left: 20px;">
+					</div>
+				</th>
+				<th>
+					<div id="sequenceContainer">
+						<h1>GENETICS</h1>
+						<p>
+							
+						</p>
+					</div>
+					<div id = "wormDisplayer">
+			
+					</div>
+				</th>
+			</tr>
+		</table>
+		
+		<script type="module" src="/main.js"></script>
+	</body>
 </html>
