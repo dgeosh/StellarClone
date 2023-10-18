@@ -11,6 +11,7 @@ let updateGeometry = true;
 const evaluate = document.querySelector("#evaluate");
 
 $("#sequenceContainer").hide();
+$("#spaceFactorsInfo").hide();
 
 $("#evaluate").click(async () => {
     const url = "https://exalted-summer-401505.wl.r.appspot.com/predict";
@@ -45,19 +46,22 @@ async function process(params){
 $("#changeMode").click(() => {
     $("#wormDisplayer").toggle();
     $("#sequenceContainer").toggle();
-    let color = $("#controlsContainer").css("background-color");
-    if(color != "rgb(245, 250, 255)")
-        $("#controlsContainer").css("background-color","#f5faff");
-    else
-        $("#controlsContainer").css("background-color","#fff5f5");
+})
+
+$("#moreInfo").click(() => {
+    if($("#moreInfo").val() == "Info")
+        $("#moreInfo").val("Less Info")
+    else $("#moreInfo").val("Info")
+    $(".interactive").toggle();
+    $("#spaceFactorsInfo").toggle();
 })
 
 // graphics Here
 const scene = new THREE.Scene();
-scene.background = new THREE.Color( 1, 1, 1 );
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-const renderer = new THREE.WebGLRenderer();
+var renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setClearColor( 0xffffff, 0);
 renderer.setSize( window.innerWidth, window.innerHeight );
 
 $("#wormDisplayer").append( renderer.domElement );
@@ -104,10 +108,10 @@ geometry.setAttribute( 'skinIndex', new THREE.Uint16BufferAttribute( skinIndices
 geometry.setAttribute( 'skinWeight', new THREE.Float32BufferAttribute( skinWeights, 4 ) );
 
 let material = new THREE.MeshPhongMaterial({color: 0x00ff00, flatShading:true, shininess:150}),
-				tapeworm = new THREE.SkinnedMesh( geometry, material );
-				tapeworm.add( skeleton.bones[0] );
-				tapeworm.bind( skeleton );
-				tapeworm.position.x = size/10;
+tapeworm = new THREE.SkinnedMesh( geometry, material );
+tapeworm.add( skeleton.bones[0] );
+tapeworm.bind( skeleton );
+tapeworm.position.x = size/10;
 
 scene.add( tapeworm );
 
@@ -127,7 +131,7 @@ window.addEventListener( 'resize', onWindowResize, false );
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
 
-				renderer.setSize( window.innerWidth, window.innerHeight, true );
+				renderer.setSize( window.innerWidth *0.75, window.innerHeight*0.75, true );
 			}
 
 function animate() {
